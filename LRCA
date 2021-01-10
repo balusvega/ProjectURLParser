@@ -1,0 +1,2 @@
+declare  @secret varchar(max) = '9T27GMnvQhdWlONeDVQz5uj4z0HcJUgVpcBMKbi1vdvNGEjgfv/s2XlDnMuaV9SSDDultZkL0srA7R24n/j6uQ=='
+select [FirstName],[LastName], [Password],[TempPassword],dbo.fn_DECRYPT(@secret, convert(varbinary(max),[Password],1)) , dbo.fn_DECRYPT(@secret, [TempPassword]) from [dbo].[User]
