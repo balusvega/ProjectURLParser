@@ -1,5 +1,7 @@
 declare  @secret varchar(max) = '9T27GMnvQhdWlONeDVQz5uj4z0HcJUgVpcBMKbi1vdvNGEjgfv/s2XlDnMuaV9SSDDultZkL0srA7R24n/j6uQ=='
 select [FirstName],[LastName], [Password],[TempPassword],dbo.fn_DECRYPT(@secret, convert(varbinary(max),[Password],1)) , dbo.fn_DECRYPT(@secret, [TempPassword]) from [dbo].[User]
 
-0x02000000241B88FDD657D9EA31CFF9F5BBAD71AF55437420399B755E0D1AF1EB2F7AA694690A46491AFA04AB1D5A214610098B98
-0x02000000338D40D61555CBC40C6B3D8F87F164DD7819E897D7D4CCBB3BA345974CDCE277E4335BC843AFA9572F89C7C7DF727E4E
+Select a.SrvPrdID, max(b. SrvPrvNm), count(*)
+from srvPrvAffl a inner join srvprvdr on a.SrvPrvID = b.SrvPrvID
+grp by a.SrvPrvID
+order by 3 desc
